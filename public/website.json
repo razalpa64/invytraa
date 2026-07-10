@@ -52,7 +52,7 @@
       "name": "Emarald Reverie",
       "category": "Wedding",
       "price": "500",
-      "thumbnail": "https://images.pexels.com/photos/5157294/pexels-photo-5157294.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+      "thumbnail": "/images/templates/emerald.png",
       "previewLink": "https://emarald-reverie.netlify.app/",
       "features": ["RSVP Form", "Countdown Timer", "Map Integration", "Photo Gallery"],
       "description": "A majestic and timeless design featuring rich gold accents and classic serif typography. Perfect for grand, traditional weddings."
