@@ -59,11 +59,11 @@
     },
     {
       "id": "t2",
-      "name": "Modern Minimalist",
-      "category": "Engagement",
-      "price": "$120",
-      "thumbnail": "https://images.pexels.com/photos/27638841/pexels-photo-27638841.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
-      "previewLink": "#coming-soon",
+      "name": "True Royale",
+      "category": "Marriage",
+      "price": "500",
+      "thumbnail": "/images/templates/modern-minimalist.png",
+      "previewLink": "https://trueroyale.netlify.app/",
       "features": ["RSVP Form", "Add to Calendar", "Minimal Animations"],
       "description": "Clean lines, generous whitespace, and subtle animations. For those who appreciate the beauty of simplicity."
     },
