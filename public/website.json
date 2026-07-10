@@ -53,7 +53,7 @@
       "category": "Wedding",
       "price": "$150",
       "thumbnail": "https://images.pexels.com/photos/5157294/pexels-photo-5157294.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
-      "previewLink": "#coming-soon",
+      "previewLink": "https://poetic-gingersnap-61c528.netlify.app/",
       "features": ["RSVP Form", "Countdown Timer", "Map Integration", "Photo Gallery"],
       "description": "A majestic and timeless design featuring rich gold accents and classic serif typography. Perfect for grand, traditional weddings."
     },
