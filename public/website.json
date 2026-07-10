@@ -1,0 +1,118 @@
+{
+  "brand": {
+    "name": "INVYTRA",
+    "tagline": "Where Invitations Come Alive.",
+    "loadingQuotes": [
+      "Where Invitations Come Alive.",
+      "Luxury Crafted for Every Celebration.",
+      "Creating First Impressions That Last Forever.",
+      "Beyond Paper.",
+      "Every Celebration Deserves a Grand Entrance."
+    ],
+    "about": {
+      "heading": "Redefining the Art of Invitation.",
+      "description1": "We don't just design invitations; we craft immersive digital experiences. Each INVYTRA creation is a bespoke website that sets the perfect tone for your most cherished moments.",
+      "description2": "From elegant typography to cinematic animations, every detail is meticulously refined to ensure your guests are captivated before the celebration even begins.",
+      "image": "https://images.pexels.com/photos/34241948/pexels-photo-34241948.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200"
+    }
+  },
+  "hero": {
+    "headline": "Luxury Digital Invitations That Leave a Lasting Impression",
+    "subheading": "Create unforgettable digital invitations for weddings, birthdays, engagements, baby showers, corporate events, and every special occasion.",
+    "video": ""
+  },
+  "features": [
+    {
+      "title": "Premium Design",
+      "description": "Awwwards-quality designs that reflect your unique taste and style."
+    },
+    {
+      "title": "Custom Made",
+      "description": "Fully personalized typography, colors, and layouts tailored to your event."
+    },
+    {
+      "title": "Interactive",
+      "description": "Cinematic scroll animations, glassmorphism, and elegant hover effects."
+    },
+    {
+      "title": "Fast Delivery",
+      "description": "Receive your completely customized, responsive invitation website within days."
+    }
+  ],
+  "process": [
+    { "step": "1", "title": "Choose Template", "desc": "Select a luxury base design." },
+    { "step": "2", "title": "Share Details", "desc": "Provide your event information." },
+    { "step": "3", "title": "We Customize", "desc": "Our designers craft your website." },
+    { "step": "4", "title": "Review", "desc": "Approve the final design." },
+    { "step": "5", "title": "Share", "desc": "Send your elegant link to guests." }
+  ],
+  "templates": [
+    {
+      "id": "t1",
+      "name": "The Royal Elegance",
+      "category": "Wedding",
+      "price": "$150",
+      "thumbnail": "https://images.pexels.com/photos/5157294/pexels-photo-5157294.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+      "previewLink": "#coming-soon",
+      "features": ["RSVP Form", "Countdown Timer", "Map Integration", "Photo Gallery"],
+      "description": "A majestic and timeless design featuring rich gold accents and classic serif typography. Perfect for grand, traditional weddings."
+    },
+    {
+      "id": "t2",
+      "name": "Modern Minimalist",
+      "category": "Engagement",
+      "price": "$120",
+      "thumbnail": "https://images.pexels.com/photos/27638841/pexels-photo-27638841.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+      "previewLink": "#coming-soon",
+      "features": ["RSVP Form", "Add to Calendar", "Minimal Animations"],
+      "description": "Clean lines, generous whitespace, and subtle animations. For those who appreciate the beauty of simplicity."
+    },
+    {
+      "id": "t3",
+      "name": "Floral Whisper",
+      "category": "Baby Shower",
+      "price": "$95",
+      "thumbnail": "https://images.pexels.com/photos/33344214/pexels-photo-33344214.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+      "previewLink": "#coming-soon",
+      "features": ["Gift Registry", "Photo Gallery", "Soft Animations"],
+      "description": "Delicate watercolor florals and soft pastel tones create a warm, welcoming atmosphere."
+    },
+    {
+      "id": "t4",
+      "name": "Midnight Gala",
+      "category": "Corporate Event",
+      "price": "$200",
+      "thumbnail": "https://images.pexels.com/photos/36617802/pexels-photo-36617802.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+      "previewLink": "#coming-soon",
+      "features": ["Agenda", "Speaker Profiles", "Ticket Integration"],
+      "description": "A sophisticated dark mode template with sleek silver accents. Ideal for premium corporate gatherings."
+    }
+  ],
+  "testimonials": [
+    {
+      "name": "Sarah & James",
+      "event": "Wedding",
+      "text": "INVYTRA absolutely transformed how we invited our guests. Everyone asked who designed our website. It was stunning.",
+      "rating": 5
+    },
+    {
+      "name": "Elena M.",
+      "event": "Birthday Gala",
+      "text": "The animations were incredibly smooth. It felt like scrolling through an expensive brand's website. Worth every penny.",
+      "rating": 5
+    },
+    {
+      "name": "Marcus T.",
+      "event": "Corporate Anniversary",
+      "text": "Professional, seamless, and visually breathtaking. INVYTRA delivered exactly what our corporate brand needed.",
+      "rating": 5
+    }
+  ],
+  "contact": {
+    "whatsapp": "+918606159002",
+    "displayWhatsapp": "+91 8606159002",
+    "email": "invytrareal@gmail.com",
+    "instagram": "@invytra",
+    "instagramUrl": "https://instagram.com/invytra"
+  }
+}

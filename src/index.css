@@ -1,0 +1,179 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ivory: #FAF8F4;
+  --color-pearl: #FFFFFF;
+  --color-champagne: #F7E7CE;
+  
+  --color-beige-light: #F5F1EB;
+  --color-beige: #E5DAC8;
+  
+  --color-gold-light: #E6C27A;
+  --color-gold: #D4AF37;
+  --color-gold-dark: #AA8C2C;
+  
+  --color-bronze: #CD7F32;
+  --color-charcoal: #1A1A1A;
+  --color-ink: #0A0A0A;
+
+  --font-heading: "Cormorant Garamond", serif;
+  --font-sans: "Inter", sans-serif;
+
+  --background-image-luxury-gradient: linear-gradient(135deg, #FAF8F4 0%, #F5F1EB 100%);
+  --background-image-gold-gradient: linear-gradient(135deg, #D4AF37 0%, #AA8C2C 100%);
+
+  --box-shadow-luxury: 0 20px 40px -15px rgba(212, 175, 55, 0.15);
+  --box-shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.06);
+}
+
+@layer base {
+  html {
+    scroll-behavior: initial;
+  }
+  body {
+    background-color: var(--color-ivory);
+    color: var(--color-charcoal);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Lenis smooth scroll */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* ─── CSS-only Decorative Animations (zero JS overhead) ─── */
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-24px) scale(1.03); }
+}
+
+@keyframes float-slower {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-18px) rotate(3deg); }
+  66% { transform: translateY(-8px) rotate(-2deg); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes gold-pulse {
+  0%, 100% { opacity: 0.4; transform: scaleX(1); }
+  50% { opacity: 1; transform: scaleX(1.04); }
+}
+
+@keyframes scroll-bounce {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50% { transform: translateY(8px); opacity: 0.4; }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Utility classes */
+.animate-float-slow {
+  animation: float-slow 7s ease-in-out infinite;
+}
+.animate-float-slower {
+  animation: float-slower 11s ease-in-out infinite;
+}
+.animate-gold-pulse {
+  animation: gold-pulse 3s ease-in-out infinite;
+}
+.animate-scroll-bounce {
+  animation: scroll-bounce 1.8s ease-in-out infinite;
+}
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out forwards;
+}
+
+/* Gold shimmer text */
+.text-shimmer {
+  background: linear-gradient(90deg, #D4AF37 0%, #FAF8F4 40%, #D4AF37 60%, #AA8C2C 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
+}
+
+/* Glassmorphism card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+/* Gold divider line */
+.gold-line {
+  background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+}
+
+/* ─── Scroll Reveal System (IntersectionObserver driven) ─── */
+
+/* Base state — hidden before in-view */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.reveal.reveal-scale {
+  transform: scale(0.94);
+}
+
+.reveal.reveal-left {
+  transform: translateX(-30px);
+}
+
+.reveal.reveal-right {
+  transform: translateX(30px);
+}
+
+/* Triggered state */
+.reveal.in-view {
+  opacity: 1;
+  transform: none;
+}
+
+/* Stagger delays — add data-delay="1" through "8" on elements */
+.reveal[data-delay="1"] { transition-delay: 0.08s; }
+.reveal[data-delay="2"] { transition-delay: 0.16s; }
+.reveal[data-delay="3"] { transition-delay: 0.24s; }
+.reveal[data-delay="4"] { transition-delay: 0.32s; }
+.reveal[data-delay="5"] { transition-delay: 0.40s; }
+.reveal[data-delay="6"] { transition-delay: 0.48s; }
+.reveal[data-delay="7"] { transition-delay: 0.56s; }
+.reveal[data-delay="8"] { transition-delay: 0.64s; }
