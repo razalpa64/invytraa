@@ -79,13 +79,13 @@
     },       
     {
       "id": "t4",
-      "name": "Midnight Gala",
+      "name": "The Red Affair",
       "category": "Corporate Event",
-      "price": "$200",
-      "thumbnail": "https://images.pexels.com/photos/36617802/pexels-photo-36617802.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
-      "previewLink": "#coming-soon",
-      "features": ["Agenda", "Speaker Profiles", "Ticket Integration"],
-      "description": "A sophisticated dark mode template with sleek silver accents. Ideal for premium corporate gatherings."
+      "price": "200",
+      "thumbnail": "/images/templates/red.png",
+      "previewLink": "https://razalpa64.github.io/red/",
+      "features": ["Agenda", "Locatrion", "photo Gallery"],
+      "description": "A Beutiful Minimal Invitation Card."
     }
   ],
   "testimonials": [
