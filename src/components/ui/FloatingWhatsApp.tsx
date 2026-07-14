@@ -17,7 +17,7 @@ export default function FloatingWhatsApp({ whatsapp }: Props) {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat on WhatsApp"
-      className="fixed bottom-20 md:bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 rounded-full shadow-luxury transition-transform duration-300 hover:scale-110 group"
+      className="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 rounded-full shadow-luxury transition-transform duration-300 hover:scale-110 group"
       style={{ background: 'linear-gradient(135deg, #25D366, #128C7E)' }}
     >
       {/* Pulse ring */}
