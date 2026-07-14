@@ -1,11 +1,26 @@
-import { useInView } from '../hooks/useInView';
+import { useReviews } from '../hooks/useReviews';
 import { WebsiteData } from '../types';
 import { Star, Quote, BadgeCheck } from 'lucide-react';
 
-export default function Testimonials({ testimonials }: { testimonials: WebsiteData['testimonials'] }) {
+export default function Testimonials({ testimonials: staticReviews }: { testimonials: WebsiteData['testimonials'] }) {
   const sectionRef = useInView(0.1);
+  const { reviews: dbReviews, loading } = useReviews();
 
-  const avgRating = testimonials.reduce((sum, t) => sum + t.rating, 0) / testimonials.length;
+  // Merge static JSON reviews with dynamic approved Supabase reviews
+  const mergedReviews = [
+    ...dbReviews.map(r => ({
+      name: r.customer_name,
+      event: r.template_used || 'Wedding',
+      text: r.review_text,
+      rating: r.rating,
+      weddingDate: r.wedding_date ? new Date(r.wedding_date).toLocaleDateString('en-US', { year: 'numeric', month: 'long' }) : undefined,
+      templateUsed: r.template_used,
+      verified: true
+    })),
+    ...staticReviews
+  ];
+
+  const avgRating = mergedReviews.reduce((sum, t) => sum + t.rating, 0) / (mergedReviews.length || 1);
 
   return (
     <section
@@ -36,7 +51,7 @@ export default function Testimonials({ testimonials }: { testimonials: WebsiteDa
               ))}
             </div>
             <span className="font-heading text-2xl text-charcoal">{avgRating.toFixed(1)}</span>
-            <span className="font-sans text-sm text-charcoal/40">({testimonials.length} reviews)</span>
+            <span className="font-sans text-sm text-charcoal/40">({mergedReviews.length} reviews)</span>
           </div>
 
           <div className="reveal flex items-center justify-center gap-4 mt-4" data-delay="3">
@@ -48,7 +63,7 @@ export default function Testimonials({ testimonials }: { testimonials: WebsiteDa
 
         {/* Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-7 mt-14">
-          {testimonials.map((t, idx) => (
+          {mergedReviews.map((t, idx) => (
             <div
               key={idx}
               className="reveal glass-card p-9 rounded-2xl hover:shadow-luxury transition-all duration-500 hover:-translate-y-1.5 relative overflow-hidden"
