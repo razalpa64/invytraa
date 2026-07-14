@@ -10,18 +10,37 @@ export interface WebsiteData {
       image: string;
     };
   };
+  stats: Array<{
+    number: string;
+    suffix: string;
+    label: string;
+  }>;
   hero: {
     headline: string;
     subheading: string;
     video?: string;
   };
-  features: Array<{ title: string; description: string }>;
-  process: Array<{ step: string; title: string; desc: string }>;
+  features: Array<{
+    icon: string;
+    title: string;
+    description: string;
+  }>;
+  process: Array<{
+    step: string;
+    icon: string;
+    title: string;
+    desc: string;
+  }>;
   templates: Array<{
     id: string;
     name: string;
     category: string;
+    tags: string[];
     price: string;
+    badge?: string;
+    rating: number;
+    reviewCount: number;
+    deliveryTime: string;
     thumbnail: string;
     previewLink: string;
     features: string[];
@@ -32,6 +51,13 @@ export interface WebsiteData {
     event: string;
     text: string;
     rating: number;
+    weddingDate?: string;
+    templateUsed?: string;
+    verified?: boolean;
+  }>;
+  faq: Array<{
+    question: string;
+    answer: string;
   }>;
   contact: {
     whatsapp: string;
@@ -39,5 +65,13 @@ export interface WebsiteData {
     email: string;
     instagram: string;
     instagramUrl: string;
+    location?: string;
   };
 }
+
+export type Template = WebsiteData['templates'][0];
+export type Testimonial = WebsiteData['testimonials'][0];
+export type Feature = WebsiteData['features'][0];
+export type ProcessStep = WebsiteData['process'][0];
+export type FAQ = WebsiteData['faq'][0];
+export type Stat = WebsiteData['stats'][0];
