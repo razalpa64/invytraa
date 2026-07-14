@@ -62,10 +62,17 @@ export function useSubmitReview() {
 
       setStatus('success');
     } catch (err) {
-      const msg = err instanceof Error ? err.message : 'Submission failed. Please try again.';
+      console.error('[INVYTRA Review Submit]', err);
+      let msg = 'Submission failed. Please try again.';
+      if (err && typeof err === 'object') {
+        if ('message' in err && typeof err.message === 'string') {
+          msg = err.message;
+        }
+      } else if (typeof err === 'string') {
+        msg = err;
+      }
       setErrorMessage(msg);
       setStatus('error');
-      console.error('[INVYTRA Review Submit]', msg);
     }
   };
 
