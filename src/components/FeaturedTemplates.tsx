@@ -46,7 +46,7 @@ function TemplateCard({
 
   const handleWhatsApp = (e: React.MouseEvent) => {
     e.stopPropagation();
-    const msg = `Hello INVYTRA!%0A%0AI would like to order this template:%0A%0A*Template:* ${template.name}%0A*Price:* AED ${template.price}%0A%0APlease assist me.`;
+    const msg = `Hello INVYTRA!%0A%0AI would like to order this template:%0A%0A*Template:* ${template.name}%0A*Price:* ₹${template.price}%0A%0APlease assist me.`;
     window.open(`https://wa.me/${whatsapp.replace(/[^0-9]/g, '')}?text=${msg}`, '_blank');
   };
 
@@ -62,49 +62,62 @@ function TemplateCard({
 
   const hasPreview = template.previewLink?.startsWith('http');
 
-  const badgeColors: Record<string, string> = {
-    Bestseller: 'bg-gold text-white',
+  const badgeStyles: Record<string, string> = {
+    Bestseller: 'bg-[#C9A84C] text-white',
     'Most Loved': 'bg-rose-500 text-white',
-    Trending: 'bg-charcoal text-white',
-    New: 'bg-emerald-600 text-white',
+    Trending: 'bg-[#1A1A1A] text-white',
+    New: 'bg-emerald-700 text-white',
   };
 
   return (
-    <article className="group relative bg-white rounded-2xl overflow-hidden shadow-glass hover:shadow-luxury transition-all duration-500 hover:-translate-y-1.5 border border-white/80 flex flex-col">
-      {/* Image */}
-      <div className="relative aspect-[3/4] overflow-hidden bg-beige-light flex-shrink-0">
+    <article
+      className="group flex flex-col bg-white overflow-hidden transition-all duration-300 hover:-translate-y-1"
+      style={{
+        borderRadius: '16px',
+        border: '1px solid #E8E4DC',
+        boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
+      }}
+    >
+      {/* ── Image ── */}
+      <div
+        className="relative overflow-hidden flex-shrink-0 bg-[#F5F1EB]"
+        style={{ aspectRatio: '4/5', borderRadius: '14px 14px 0 0' }}
+      >
         <img
           src={template.thumbnail}
           alt={`${template.name} invitation template`}
-          className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-in-out"
+          className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
           loading="lazy"
           decoding="async"
         />
 
-        {/* Dark overlay on hover */}
-        <div className="absolute inset-0 bg-ink/0 group-hover:bg-ink/40 transition-colors duration-500" />
+        {/* Subtle dark veil on hover — for overlay buttons */}
+        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300" />
 
         {/* Badge */}
         {template.badge && (
-          <div className={`absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] uppercase tracking-wider font-semibold ${badgeColors[template.badge] ?? 'bg-white text-charcoal'}`}>
+          <div
+            className={`absolute top-3 left-3 px-2.5 py-1 text-[9px] uppercase tracking-[0.18em] font-semibold ${badgeStyles[template.badge] ?? 'bg-white text-[#1A1A1A]'}`}
+            style={{ borderRadius: '6px' }}
+          >
             {template.badge}
           </div>
         )}
 
-        {/* Favorite */}
+        {/* Wishlist */}
         <button
           onClick={(e) => { e.stopPropagation(); setLiked(!liked); }}
-          aria-label={liked ? 'Remove from favourites' : 'Add to favourites'}
-          className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center transition-all duration-300 hover:bg-white hover:scale-110"
+          aria-label={liked ? 'Remove from favourites' : 'Save to favourites'}
+          className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center transition-all duration-200 hover:bg-white hover:scale-105"
         >
           <Heart
-            size={14}
-            className={`transition-colors duration-200 ${liked ? 'fill-rose-500 text-rose-500' : 'text-charcoal/60'}`}
+            size={13}
+            className={liked ? 'fill-rose-500 text-rose-500' : 'text-[#1A1A1A]/50'}
           />
         </button>
 
-        {/* Hover action buttons */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-400">
+        {/* Hover overlay actions */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-2.5 opacity-0 group-hover:opacity-100 transition-opacity duration-250">
           {hasPreview && (
             <a
               href={template.previewLink}
@@ -112,82 +125,140 @@ function TemplateCard({
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
               aria-label={`Live demo of ${template.name}`}
-              className="flex items-center gap-2 px-6 py-2.5 bg-white text-charcoal text-[11px] uppercase tracking-widest font-semibold rounded-none hover:bg-gold hover:text-white transition-colors duration-300 shadow-lg"
+              className="flex items-center gap-2 bg-white text-[#1A1A1A] text-[10px] uppercase tracking-[0.18em] font-semibold px-5 py-2.5 hover:bg-[#C9A84C] hover:text-white transition-colors duration-250"
+              style={{ borderRadius: '8px' }}
             >
-              <ExternalLink size={12} />
+              <ExternalLink size={11} strokeWidth={2} />
               Live Demo
             </a>
           )}
           <button
             onClick={handleCopyLink}
-            className="flex items-center gap-2 px-6 py-2 bg-white/20 backdrop-blur-sm text-white text-[11px] uppercase tracking-widest font-medium border border-white/30 rounded-none hover:bg-white/30 transition-colors"
+            className="flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/40 text-white text-[10px] uppercase tracking-[0.18em] font-medium px-5 py-2 hover:bg-white/25 transition-colors duration-250"
+            style={{ borderRadius: '8px' }}
           >
-            {copied ? <Check size={12} /> : <Copy size={12} />}
+            {copied ? <Check size={11} strokeWidth={2} /> : <Copy size={11} strokeWidth={2} />}
             {copied ? 'Copied!' : 'Copy Link'}
           </button>
         </div>
 
-        {/* Category chip */}
-        <div className="absolute bottom-3 left-3 px-2.5 py-1 bg-white/80 backdrop-blur-sm rounded-full">
-          <span className="text-gold text-[10px] uppercase tracking-widest font-semibold">{template.category}</span>
+        {/* Category — bottom-left */}
+        <div
+          className="absolute bottom-3 left-3 bg-white/90 backdrop-blur-sm px-2.5 py-1"
+          style={{ borderRadius: '6px' }}
+        >
+          <span className="text-[#C9A84C] text-[9px] uppercase tracking-[0.2em] font-semibold">
+            {template.category}
+          </span>
         </div>
       </div>
 
-      {/* Card body */}
-      <div className="p-5 flex flex-col flex-1">
-        <div className="flex justify-between items-start mb-2">
-          <h3 className="font-heading text-xl text-charcoal leading-tight">{template.name}</h3>
-          <span className="font-heading text-xl text-gold font-semibold ml-2 flex-shrink-0">
+      {/* ── Body ── */}
+      <div className="flex flex-col flex-1 p-6 gap-0">
+
+        {/* Title + Price */}
+        <div className="flex items-start justify-between gap-3 mb-3">
+          <h3
+            className="font-heading text-[#1A1A1A] leading-snug"
+            style={{ fontSize: 'clamp(1rem, 2.5vw, 1.2rem)' }}
+          >
+            {template.name}
+          </h3>
+          <span
+            className="font-heading text-[#C9A84C] font-semibold flex-shrink-0"
+            style={{ fontSize: 'clamp(1rem, 2.5vw, 1.15rem)' }}
+          >
             ₹{template.price}
           </span>
         </div>
 
         {/* Rating */}
-        <div className="flex items-center gap-1.5 mb-3">
-          <div className="flex gap-0.5">
+        <div className="flex items-center gap-2 mb-4">
+          <div className="flex gap-[2px]">
             {[1, 2, 3, 4, 5].map((i) => (
               <Star
                 key={i}
-                size={11}
-                className={i <= Math.round(template.rating) ? 'fill-gold text-gold' : 'text-charcoal/15'}
+                size={10}
+                className={i <= Math.round(template.rating) ? 'fill-[#C9A84C] text-[#C9A84C]' : 'text-[#1A1A1A]/12'}
               />
             ))}
           </div>
-          <span className="text-[11px] text-charcoal/50 font-sans">{template.rating.toFixed(1)}</span>
-          <span className="text-[11px] text-charcoal/35 font-sans">({template.reviewCount})</span>
+          <span className="text-[11px] text-[#1A1A1A]/45 font-sans tabular-nums">
+            {template.rating.toFixed(1)}
+          </span>
+          <span className="text-[10px] text-[#1A1A1A]/30 font-sans">
+            ({template.reviewCount})
+          </span>
         </div>
 
         {/* Tags */}
-        <div className="flex gap-1.5 flex-wrap mb-3">
+        <div className="flex flex-wrap gap-1.5 mb-4">
           {template.tags.slice(0, 3).map((tag) => (
-            <span key={tag} className="text-[9px] uppercase tracking-wider text-charcoal/45 border border-charcoal/10 px-2 py-0.5 rounded-full">
+            <span
+              key={tag}
+              className="text-[9px] uppercase tracking-[0.15em] text-[#1A1A1A]/40 font-sans"
+              style={{
+                border: '1px solid #E0DBD1',
+                borderRadius: '4px',
+                padding: '2px 7px',
+                letterSpacing: '0.12em',
+              }}
+            >
               {tag}
             </span>
           ))}
         </div>
 
-        <p className="font-sans text-[12px] text-charcoal/55 line-clamp-2 mb-4 leading-relaxed flex-1">
+        {/* Description */}
+        <p className="font-sans text-[12.5px] text-[#1A1A1A]/50 leading-relaxed line-clamp-2 flex-1 mb-4">
           {template.description}
         </p>
 
-        {/* Delivery time */}
-        <p className="text-[10px] uppercase tracking-widest text-charcoal/35 mb-4">
-          🕐 Delivery: {template.deliveryTime}
-        </p>
+        {/* Delivery */}
+        <div className="flex items-center gap-1.5 mb-5">
+          <div className="w-3.5 h-3.5 flex-shrink-0 text-[#C9A84C]/60">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+            </svg>
+          </div>
+          <span className="text-[10px] uppercase tracking-[0.18em] text-[#1A1A1A]/35 font-sans">
+            Delivery in {template.deliveryTime}
+          </span>
+        </div>
 
-        {/* Action buttons */}
+        {/* ── CTA Buttons ── */}
         <div className="flex flex-col gap-2 mt-auto">
+          {/* Primary */}
           <button
             onClick={handleWhatsApp}
-            className="flex items-center justify-center gap-2 py-3 bg-charcoal text-white text-[11px] uppercase tracking-widest font-medium hover:bg-gold transition-colors duration-300 w-full"
+            className="w-full flex items-center justify-center gap-2 text-white font-sans font-medium transition-all duration-250 hover:opacity-90 active:scale-[0.98]"
+            style={{
+              background: '#1A1A1A',
+              borderRadius: '10px',
+              padding: '11px 16px',
+              fontSize: '10.5px',
+              letterSpacing: '0.18em',
+              textTransform: 'uppercase',
+            }}
             aria-label={`Order ${template.name} via WhatsApp`}
           >
-            <MessageCircle size={13} />
+            <MessageCircle size={12} strokeWidth={2} />
             Order on WhatsApp
           </button>
+
+          {/* Secondary */}
           <button
             onClick={() => onSelectTemplate(template.id)}
-            className="flex items-center justify-center gap-2 py-2.5 border border-charcoal/15 text-charcoal text-[11px] uppercase tracking-widest font-medium hover:border-gold hover:text-gold transition-all duration-300 w-full"
+            className="w-full flex items-center justify-center gap-1.5 font-sans font-medium text-[#1A1A1A]/60 hover:text-[#C9A84C] transition-colors duration-250"
+            style={{
+              border: '1px solid #E8E4DC',
+              borderRadius: '10px',
+              padding: '10px 16px',
+              fontSize: '10.5px',
+              letterSpacing: '0.18em',
+              textTransform: 'uppercase',
+              background: 'transparent',
+            }}
             aria-label={`View details for ${template.name}`}
           >
             View Details
@@ -197,6 +268,7 @@ function TemplateCard({
     </article>
   );
 }
+
 
 export default function FeaturedTemplates({ templates, onSelectTemplate, whatsapp }: Props) {
   const sectionRef = useInView(0.05) as React.RefObject<HTMLDivElement>;
