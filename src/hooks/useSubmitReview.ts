@@ -47,12 +47,18 @@ export function useSubmitReview() {
         }
       }
 
+      // Format YYYY-MM month inputs into valid YYYY-MM-01 dates for Postgres DATE field
+      let formattedDate = data.wedding_date || null;
+      if (formattedDate && formattedDate.length === 7) {
+        formattedDate = `${formattedDate}-01`;
+      }
+
       // Insert review (pending approval)
       const { error: insertError } = await supabase.from('reviews').insert({
         customer_name: data.customer_name.trim(),
         rating: data.rating,
         review_text: data.review_text.trim(),
-        wedding_date: data.wedding_date || null,
+        wedding_date: formattedDate,
         template_used: data.template_used || null,
         photo_url,
         approved: false, // Admin must approve before it's shown publicly
