@@ -288,17 +288,43 @@ export default function FeaturedTemplates({ templates, onSelectTemplate, whatsap
           t.name.toLowerCase().includes(q) ||
           t.category.toLowerCase().includes(q) ||
           t.tags.some((tag) => tag.toLowerCase().includes(q)) ||
-          t.description.toLowerCase().includes(q)
+          t.description.toLowerCase().includes(q) ||
+          (t.keywords && t.keywords.some((kw) => kw.toLowerCase().includes(q)))
       );
     }
 
     // Category filter
     if (activeCategory !== 'All') {
-      list = list.filter(
-        (t) =>
-          t.category.toLowerCase() === activeCategory.toLowerCase() ||
-          t.tags.some((tag) => tag.toLowerCase() === activeCategory.toLowerCase())
-      );
+      const catLower = activeCategory.toLowerCase();
+      list = list.filter((t) => {
+        // Match category
+        const matchesCategory = t.category.toLowerCase().includes(catLower) || catLower.includes(t.category.toLowerCase());
+        // Match tags
+        const matchesTags = t.tags.some((tag) => tag.toLowerCase() === catLower);
+        // Match keywords
+        const matchesKeywords = t.keywords ? t.keywords.some((kw) => kw.toLowerCase() === catLower) : false;
+        
+        // Special maps/synonyms for overlapping tags or related topics
+        let matchesSynonyms = false;
+        if (catLower === 'wedding' || catLower === 'marriage') {
+          // If we select Wedding/Marriage, show both weddings, marriages, nikah, etc.
+          const text = (t.category + ' ' + (t.keywords?.join(' ') || '')).toLowerCase();
+          matchesSynonyms = text.includes('wedding') || text.includes('marriage') || text.includes('nikah');
+        }
+        if (catLower === 'nikah') {
+          const text = (t.name + ' ' + t.category + ' ' + (t.keywords?.join(' ') || '')).toLowerCase();
+          matchesSynonyms = text.includes('nikah');
+        }
+        if (catLower === 'engagement') {
+          const text = (t.name + ' ' + t.category + ' ' + (t.keywords?.join(' ') || '')).toLowerCase();
+          matchesSynonyms = text.includes('engagement');
+        }
+        if (catLower === 'trending') {
+          matchesSynonyms = t.badge?.toLowerCase() === 'trending' || t.badge?.toLowerCase() === 'bestseller' || t.badge?.toLowerCase() === 'most loved';
+        }
+
+        return matchesCategory || matchesTags || matchesKeywords || matchesSynonyms;
+      });
     }
 
     // Sort
@@ -307,10 +333,10 @@ export default function FeaturedTemplates({ templates, onSelectTemplate, whatsap
         list.sort((a, b) => b.rating - a.rating);
         break;
       case 'price-asc':
-        list.sort((a, b) => Number(a.price) - Number(b.price));
+        list.sort((a, b) => a.price - b.price);
         break;
       case 'price-desc':
-        list.sort((a, b) => Number(b.price) - Number(a.price));
+        list.sort((a, b) => b.price - a.price);
         break;
       case 'reviews':
         list.sort((a, b) => b.reviewCount - a.reviewCount);

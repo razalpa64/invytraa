@@ -36,7 +36,8 @@ export interface WebsiteData {
     name: string;
     category: string;
     tags: string[];
-    price: string;
+    keywords?: string[];
+    price: number;
     badge?: string;
     rating: number;
     reviewCount: number;
