@@ -1,3 +1,4 @@
+import { useInView } from '../hooks/useInView';
 import { useReviews } from '../hooks/useReviews';
 import { WebsiteData } from '../types';
 import { Star, Quote, BadgeCheck } from 'lucide-react';
