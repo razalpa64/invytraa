@@ -154,10 +154,10 @@ function TemplateCard({
       </div>
 
       {/* ── Body ── */}
-      <div className="flex flex-col flex-1 p-6 gap-0">
+      <div className="flex flex-col flex-1 p-5 gap-0">
 
         {/* Title + Price */}
-        <div className="flex items-start justify-between gap-3 mb-3">
+        <div className="flex items-start justify-between gap-3 mb-2">
           <h3
             className="font-heading text-[#1A1A1A] leading-snug"
             style={{ fontSize: 'clamp(1rem, 2.5vw, 1.2rem)' }}
@@ -173,7 +173,7 @@ function TemplateCard({
         </div>
 
         {/* Rating */}
-        <div className="flex items-center gap-2 mb-4">
+        <div className="flex items-center gap-2 mb-2.5">
           <div className="flex gap-[2px]">
             {[1, 2, 3, 4, 5].map((i) => (
               <Star
@@ -192,7 +192,7 @@ function TemplateCard({
         </div>
 
         {/* Tags */}
-        <div className="flex flex-wrap gap-1.5 mb-4">
+        <div className="flex flex-wrap gap-1.5 mb-3">
           {template.tags.slice(0, 3).map((tag) => (
             <span
               key={tag}
@@ -200,7 +200,7 @@ function TemplateCard({
               style={{
                 border: '1px solid #E0DBD1',
                 borderRadius: '4px',
-                padding: '2px 7px',
+                padding: '1px 6px',
                 letterSpacing: '0.12em',
               }}
             >
@@ -210,12 +210,12 @@ function TemplateCard({
         </div>
 
         {/* Description */}
-        <p className="font-sans text-[12.5px] text-[#1A1A1A]/50 leading-relaxed line-clamp-2 flex-1 mb-4">
+        <p className="font-sans text-[12.5px] text-[#1A1A1A]/50 leading-relaxed line-clamp-2 flex-1 mb-3">
           {template.description}
         </p>
 
         {/* Delivery */}
-        <div className="flex items-center gap-1.5 mb-5">
+        <div className="flex items-center gap-1.5 mb-4">
           <div className="w-3.5 h-3.5 flex-shrink-0 text-[#C9A84C]/60">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
@@ -227,7 +227,7 @@ function TemplateCard({
         </div>
 
         {/* ── CTA Buttons ── */}
-        <div className="flex flex-col gap-2 mt-auto">
+        <div className="flex flex-col gap-1.5 mt-auto">
           {/* Primary */}
           <button
             onClick={handleWhatsApp}
@@ -235,7 +235,7 @@ function TemplateCard({
             style={{
               background: '#1A1A1A',
               borderRadius: '10px',
-              padding: '11px 16px',
+              padding: '9.5px 16px',
               fontSize: '10.5px',
               letterSpacing: '0.18em',
               textTransform: 'uppercase',
@@ -253,7 +253,7 @@ function TemplateCard({
             style={{
               border: '1px solid #E8E4DC',
               borderRadius: '10px',
-              padding: '10px 16px',
+              padding: '8.5px 16px',
               fontSize: '10.5px',
               letterSpacing: '0.18em',
               textTransform: 'uppercase',
